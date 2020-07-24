@@ -1,27 +1,15 @@
 .app-wrapper {
-  display: grid;
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 1fr 5fr;
-  grid-template-areas:
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 1fr 5fr;
+    grid-template-areas:
   "header header"
-  "nav content"
-;
+  "nav content";
+    width: 1200px;
+    margin: 0 auto;
 }
 
-.header {
-  grid-area: header;
-  background-color: aquamarine;
-}
-.header img {
-  max-height: 100px;
-}
-
-.nav {
-  grid-area: nav;
-  background-color: gray;
-}
-
-.content {
-  grid-area: content;
-  background-color: cornflowerblue;
+.app-wrapper-content {
+    grid-area: content;
+    background-color: cornflowerblue;
 }

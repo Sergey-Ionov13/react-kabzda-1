@@ -1,0 +1,9 @@
+.like {
+    display: flex;
+    align-items: center;
+    grid-area: l;
+    width: 30px;
+}
+
+.like > img {
+}

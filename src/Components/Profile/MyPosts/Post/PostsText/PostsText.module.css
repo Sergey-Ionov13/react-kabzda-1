@@ -1,0 +1,8 @@
+.textArea {
+    grid-area: text;
+    background-color: #093728;
+    max-width: 100%;
+    min-height: 50px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
