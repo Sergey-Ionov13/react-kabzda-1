@@ -1,7 +1,7 @@
 .header {
     grid-area: header;
-    background-color: aquamarine;
+    background-color: #6a8d8b;
 }
 .header img {
-    max-height: 100px;
+    max-height: 100%;
 }
