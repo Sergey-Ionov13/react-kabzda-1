@@ -7,11 +7,31 @@
     padding: 20px;
 }
 
+.dialogsItems a {
+    text-decoration: none;
+    color: white;
+}
+
+.dialogsItems a.active {
+    color: gold;
+}
+
 .dialog {
+    padding-bottom: 5px;
+}
+
+.dialog:last-child {
+    padding-bottom: 0;
 }
 
 .messages {
     padding: 20px;
 }
 
-.message {}
+.message {
+    padding-bottom: 5px;
+}
+
+.message:last-child {
+    padding-bottom: 0;
+}

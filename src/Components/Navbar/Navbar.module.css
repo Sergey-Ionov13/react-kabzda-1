@@ -4,6 +4,13 @@
     background-color: #8b888d;
 }
 
+.item {
+    padding-bottom: 5px;
+}
+.item:last-child {
+    padding-bottom: 0;
+}
+
 .item a {
     color: white;
     text-decoration: none;
