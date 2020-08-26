@@ -17,7 +17,16 @@
 }
 
 .dialog {
-    padding-bottom: 5px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 10px;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.dialog img {
+    width: 30px;
+    height: 30px;
 }
 
 .dialog:last-child {
@@ -31,7 +40,21 @@
 .message {
     padding-bottom: 5px;
 }
+div[class$='my'] {
+    text-align: right;
+}
 
 .message:last-child {
     padding-bottom: 0;
+}
+
+.message div {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #6a8d8b;
+}
+
+div[class$='my'] div {
+    background-color: #8b888d;
 }
