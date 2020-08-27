@@ -5,9 +5,9 @@ import FriendsItem from "./FriendsItem/FriendsItem";
 
 const FriendsBlock = (props) => {
 
-    let friendsElements = props.friends.map( (f, i) => {
+    let friendsElements = props.sidebar.map( (s, i) => {
         if (i < 3) {
-            return (<FriendsItem name={f.name} id={f.id}/>)
+            return (<FriendsItem name={s.name} id={s.id}/>)
         }
     } );
 

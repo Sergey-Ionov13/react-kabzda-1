@@ -7,7 +7,7 @@ import state from "./Redux/state";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App m={state.messages} p={state.profile.posts} f={state.friends} />
+    <App m={state.messages} p={state.profile.posts} s={state.sidebar} />
   </React.StrictMode>,
   document.getElementById('root')
 );
