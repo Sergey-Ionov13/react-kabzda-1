@@ -9,7 +9,7 @@ const Post = (props) => {
         <div className={p.item}>
             <Ava/>
             <PostsText message={props.message}/>
-            <Like count={props.likes}/>
+            <Like likesCount={props.likesCount}/>
         </div>
     );
 }
