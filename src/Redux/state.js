@@ -6,7 +6,8 @@ let state = {
         posts: [
             {id: 1, message: 'It\'s my first post', likesCount: 9},
             {id: 2, message: 'It\'s my second post', likesCount: 7}
-        ]
+        ],
+        textarea: ''
     },
 
     dialogPage: {
@@ -36,13 +37,20 @@ let state = {
     ]
 }
 
-export let addPost = (postMessage) => {
+export let addPost = () => {
     let newPost = {
-        id: 5,
-        message: postMessage,
+        id: state.profilePage.posts.length+1,
+        message: state.profilePage.textarea,
         likesCount: 0
     }
     state.profilePage.posts.push(newPost);
+    state.profilePage.textarea = '';
+
+    rerenderEntireTree(state);
+}
+
+export let fillTextarea = (text) => {
+    state.profilePage.textarea = text;
 
     rerenderEntireTree(state);
 }
