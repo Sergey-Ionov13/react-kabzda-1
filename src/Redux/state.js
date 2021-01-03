@@ -21,10 +21,11 @@ let state = {
         ],
 
         messages: [
-            {id: 1, message: 'Hi!', my: ''},
-            {id: 2, message: 'How is your IT?', my: ''},
-            {id: 3, message: 'ok!', my: 'my'}
-        ]
+            {id: 1, message: 'Hi!', owner: ''},
+            {id: 2, message: 'How is your IT?', owner: ''},
+            {id: 3, message: 'ok!', owner: 'owner'}
+        ],
+        textarea: ''
     },
 
     sidebar: [
@@ -37,6 +38,7 @@ let state = {
     ]
 }
 
+//   for ProfilePage texarea
 export let addPost = () => {
     let newPost = {
         id: state.profilePage.posts.length+1,
@@ -51,6 +53,25 @@ export let addPost = () => {
 
 export let fillTextarea = (text) => {
     state.profilePage.textarea = text;
+
+    rerenderEntireTree(state);
+}
+
+//   for DialogsPage texarea
+export let addMessage = () => {
+    let newMessage = {
+        id: state.dialogPage.messages.length+1,
+        message: state.dialogPage.textarea,
+        owner: 'owner'
+    }
+    state.dialogPage.messages.push(newMessage);
+    state.profilePage.textarea = '';
+
+    rerenderEntireTree(state);
+}
+
+export let printText = (text) => {
+    state.dialogPage.textarea = text;
 
     rerenderEntireTree(state);
 }

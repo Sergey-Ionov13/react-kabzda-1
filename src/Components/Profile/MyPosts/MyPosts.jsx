@@ -10,11 +10,11 @@ const MyPosts = (props) => {
 
     let addPost = () => {
         props.addPost();
-    }
+    };
 
     let fillTextarea = () => {
         props.fillTextarea(newPostElement.current.value);
-    }
+    };
 
     return (
         <div className={m.myPosts}>

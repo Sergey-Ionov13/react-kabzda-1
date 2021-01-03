@@ -40,7 +40,7 @@
 .message {
     padding-bottom: 5px;
 }
-div[class$='my'] {
+div[class$='owner'] {
     text-align: right;
 }
 
