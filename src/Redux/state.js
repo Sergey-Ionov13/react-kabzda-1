@@ -1,4 +1,6 @@
-import {rerenderEntireTree} from "../render";
+let rerenderEntireTree = () => {
+    console.log('rerenderEntireTree is not yet available!');
+}
 
 let state = {
 
@@ -39,7 +41,7 @@ let state = {
 }
 
 //   for ProfilePage texarea
-export let addPost = () => {
+export const addPost = () => {
     let newPost = {
         id: state.profilePage.posts.length+1,
         message: state.profilePage.textarea,
@@ -51,14 +53,14 @@ export let addPost = () => {
     rerenderEntireTree(state);
 }
 
-export let fillTextarea = (text) => {
+export const fillTextarea = (text) => {
     state.profilePage.textarea = text;
 
     rerenderEntireTree(state);
 }
 
 //   for DialogsPage texarea
-export let addMessage = () => {
+export const addMessage = () => {
     let newMessage = {
         id: state.dialogPage.messages.length+1,
         message: state.dialogPage.textarea,
@@ -70,10 +72,14 @@ export let addMessage = () => {
     rerenderEntireTree(state);
 }
 
-export let printText = (text) => {
+export const printText = (text) => {
     state.dialogPage.textarea = text;
 
     rerenderEntireTree(state);
 }
 
-export default state
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer;
+}
+
+export default state;

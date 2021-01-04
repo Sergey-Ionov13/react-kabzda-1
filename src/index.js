@@ -1,6 +1,20 @@
 import * as serviceWorker from './serviceWorker';
-import state from "./Redux/state";
-import {rerenderEntireTree} from "./render";
+import state, {addMessage, addPost, fillTextarea, printText, subscribe} from "./Redux/state";
+import ReactDOM from "react-dom";
+import {BrowserRouter} from "react-router-dom";
+import App from "./App";
+import React from "react";
+
+let rerenderEntireTree = (state) => {
+    ReactDOM.render(
+        <BrowserRouter>
+            <App state = {state} addPost = {addPost} fillTextarea = {fillTextarea} addMessage = {addMessage} printText = {printText} />
+        </BrowserRouter>,
+        document.getElementById('root')
+    );
+};
+
+subscribe(rerenderEntireTree);
 
 rerenderEntireTree(state);
 
