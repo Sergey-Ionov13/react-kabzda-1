@@ -13,18 +13,17 @@ const App = (props) => {
     return (
             <div className='app-wrapper'>
                 <Header/>
-                <Navbar sidebar={props.state.sidebar} />
+                <Navbar sidebar={props.store.getState().sidebar} />
                 <div className='app-wrapper-content'>
                     <Route path='/Profile' render={ ()=>
-                        <Profile profilePage={props.state.profilePage}
-                                 addPost={props.addPost}
-                                 fillTextarea={props.fillTextarea} />
+                        <Profile profilePage={props.store.getState().profilePage}
+                                 addPost={props.store.addPost.bind(props.store)}
+                                 fillTextarea={props.store.fillTextarea.bind(props.store)} />
                     } />
                     <Route path='/Dialogs' render={ ()=>
-                        <Dialogs dialogs={props.state.dialogPage.dialogs}
-                                                                  messages={props.state.dialogPage.messages}
-                                                                  addMessage={props.addMessage}
-                                                                  printText={props.printText} /> } />
+                        <Dialogs dialogPage={props.store.getState().dialogPage}
+                                 addMessage={props.store.addMessage.bind(props.store)}
+                                 printText={props.store.printText.bind(props.store)} /> } />
                     <Route path='/Music' render={ ()=> <Music /> }/>
                     <Route path='/News' render={ ()=> <News /> }/>
                     <Route path='/Settings' render={ ()=> <Settings /> }/>

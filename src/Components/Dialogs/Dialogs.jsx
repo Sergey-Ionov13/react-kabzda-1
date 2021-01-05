@@ -5,9 +5,10 @@ import Message from "./Message/Message";
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.dialogs.map( d => <DialogItem name={d.name} id={d.id}/> );
-    let messagesElements = props.messages.map( m => <Message message={m.message} id={m.id} owner={m.owner}/> );
+    let dialogsElements = props.dialogPage.dialogs.map( d => <DialogItem name={d.name} id={d.id}/> );
+    let messagesElements = props.dialogPage.messages.map( m => <Message message={m.message} id={m.id} owner={m.owner}/> );
     let newPostElement = React.createRef();
+    let textarea = props.dialogPage.textarea;
 
     let addMessage = () => {
         props.addMessage();
@@ -25,7 +26,7 @@ const Dialogs = (props) => {
             <div className={d.messages}>
                 { messagesElements }
                 <div>
-                    <textarea onInput={printText} ref={newPostElement}></textarea>
+                    <textarea onInput={printText} ref={newPostElement} value={textarea}></textarea>
                 </div>
                 <button onClick={addMessage}>Add post</button>
             </div>
