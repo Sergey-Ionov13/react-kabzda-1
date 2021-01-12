@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST';
+const FILL_TEXTAREA = 'FILL-TEXTAREA';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const PRINT_TEXT = 'PRINT-TEXT';
+
 let store = {
 
     _rerenderEntireTree() {
@@ -83,5 +88,10 @@ let store = {
         }
     }
 }
+
+export const addPostActionCreator = () => ({type: ADD_POST});
+export const fillTextAreaActionCreator = (text) => ({type: FILL_TEXTAREA, text: text});
+export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
+export const printTextActionCreator = (text) => ({type: PRINT_TEXT, text: text});
 
 export default store;

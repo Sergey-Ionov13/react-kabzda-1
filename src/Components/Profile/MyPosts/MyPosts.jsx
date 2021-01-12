@@ -1,6 +1,7 @@
 import React from 'react';
 import m from './MyPosts.module.css'
 import Post from "./Post/Post";
+import {addPostActionCreator, fillTextAreaActionCreator} from "../../../Redux/state";
 
 const MyPosts = (props) => {
 
@@ -9,11 +10,12 @@ const MyPosts = (props) => {
     let textarea = props.profilePage.textarea;
 
     let addPost = () => {
-        props.dispatch( {type: 'ADD-POST'} );
+        props.dispatch( addPostActionCreator() );
     };
 
     let fillTextarea = () => {
-        props.dispatch( {type: 'FILL-TEXTAREA', text: newPostElement.current.value} );
+        let text = newPostElement.current.value;
+        props.dispatch( fillTextAreaActionCreator(text) );
     };
 
     return (

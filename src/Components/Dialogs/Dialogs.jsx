@@ -2,6 +2,7 @@ import React from 'react';
 import d from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import {addMessageActionCreator, printTextActionCreator} from "../../Redux/state";
 
 const Dialogs = (props) => {
 
@@ -11,11 +12,12 @@ const Dialogs = (props) => {
     let textarea = props.dialogPage.textarea;
 
     let addMessage = () => {
-        props.dispatch( {type: 'ADD-MESSAGE'} );
+        props.dispatch( addMessageActionCreator() );
     };
 
     let printText = () => {
-        props.dispatch( {type: 'PRINT-TEXT', text: newPostElement.current.value} );
+        let text = newPostElement.current.value;
+        props.dispatch( printTextActionCreator(text) );
     };
 
     return (
