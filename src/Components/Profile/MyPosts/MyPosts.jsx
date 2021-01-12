@@ -9,11 +9,11 @@ const MyPosts = (props) => {
     let textarea = props.profilePage.textarea;
 
     let addPost = () => {
-        props.addPost();
+        props.dispatch( {type: 'ADD-POST'} );
     };
 
     let fillTextarea = () => {
-        props.fillTextarea(newPostElement.current.value);
+        props.dispatch( {type: 'FILL-TEXTAREA', text: newPostElement.current.value} );
     };
 
     return (

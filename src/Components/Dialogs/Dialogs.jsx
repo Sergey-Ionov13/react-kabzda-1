@@ -11,11 +11,11 @@ const Dialogs = (props) => {
     let textarea = props.dialogPage.textarea;
 
     let addMessage = () => {
-        props.addMessage();
+        props.dispatch( {type: 'ADD-MESSAGE'} );
     };
 
     let printText = () => {
-        props.printText(newPostElement.current.value);
+        props.dispatch( {type: 'PRINT-TEXT', text: newPostElement.current.value} );
     };
 
     return (

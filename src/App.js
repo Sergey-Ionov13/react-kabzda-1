@@ -17,13 +17,11 @@ const App = (props) => {
                 <div className='app-wrapper-content'>
                     <Route path='/Profile' render={ ()=>
                         <Profile profilePage={props.store.getState().profilePage}
-                                 addPost={props.store.addPost.bind(props.store)}
-                                 fillTextarea={props.store.fillTextarea.bind(props.store)} />
+                                 dispatch={props.store.dispatch.bind(props.store)} />
                     } />
                     <Route path='/Dialogs' render={ ()=>
                         <Dialogs dialogPage={props.store.getState().dialogPage}
-                                 addMessage={props.store.addMessage.bind(props.store)}
-                                 printText={props.store.printText.bind(props.store)} /> } />
+                                 dispatch={props.store.dispatch.bind(props.store)} /> } />
                     <Route path='/Music' render={ ()=> <Music /> }/>
                     <Route path='/News' render={ ()=> <News /> }/>
                     <Route path='/Settings' render={ ()=> <Settings /> }/>

@@ -42,50 +42,45 @@ let store = {
         ]
     },
 
+
+
     getState() {
         return this._state;
     },
 
-    //   for ProfilePage texarea
-    addPost() {
-        let newPost = {
-            id: this._state.profilePage.posts.length+1,
-            message: this._state.profilePage.textarea,
-            likesCount: 0
-        }
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.textarea = '';
-
-        this._rerenderEntireTree(this);
-    },
-
-    fillTextarea(text) {
-        this._state.profilePage.textarea = text;
-
-        this._rerenderEntireTree(this);
-    },
-
-    //   for DialogsPage texarea
-    addMessage() {
-        let newMessage = {
-            id: this._state.dialogPage.messages.length+1,
-            message: this._state.dialogPage.textarea,
-            owner: 'owner'
-        }
-        this._state.dialogPage.messages.push(newMessage);
-        this._state.dialogPage.textarea = '';
-
-        this._rerenderEntireTree(this);
-    },
-
-    printText(text) {
-        this._state.dialogPage.textarea = text;
-
-        this._rerenderEntireTree(this);
-    },
-
     subscribe(observer) {
         this._rerenderEntireTree = observer;
+    },
+
+
+
+    dispatch(action) {
+        if (action.type==='ADD-POST') {
+            let newPost = {
+                id: this._state.profilePage.posts.length+1,
+                message: this._state.profilePage.textarea,
+                likesCount: 0
+            }
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.textarea = '';
+            this._rerenderEntireTree(this);
+
+        } else if (action.type==='FILL-TEXTAREA') {
+            this._state.profilePage.textarea = action.text;
+            this._rerenderEntireTree(this);
+        } else if (action.type==='ADD-MESSAGE') {
+            let newMessage = {
+                id: this._state.dialogPage.messages.length+1,
+                message: this._state.dialogPage.textarea,
+                owner: 'owner'
+            }
+            this._state.dialogPage.messages.push(newMessage);
+            this._state.dialogPage.textarea = '';
+            this._rerenderEntireTree(this);
+        } else if (action.type==='PRINT-TEXT') {
+            this._state.dialogPage.textarea = action.text;
+            this._rerenderEntireTree(this);
+        }
     }
 }
 
