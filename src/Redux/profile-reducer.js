@@ -1,7 +1,15 @@
 const ADD_POST = 'ADD-POST';
 const FILL_TEXTAREA = 'FILL-TEXTAREA';
 
-const profileReducer = (state, action) => {
+const initialState = {
+    posts: [
+        {id: 1, message: 'It\'s my first post', likesCount: 9},
+        {id: 2, message: 'It\'s my second post', likesCount: 7}
+    ],
+    textarea: ''
+};
+
+const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case 'ADD-POST':

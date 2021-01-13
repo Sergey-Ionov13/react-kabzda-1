@@ -36,14 +36,16 @@ let store = {
             textarea: ''
         },
 
-        sidebar: [
-            {id: 1, name: 'Sergey'},
-            {id: 2, name: 'Evgeny'},
-            {id: 3, name: 'Sergey'},
-            {id: 4, name: 'Dima'},
-            {id: 5, name: 'Vadim'},
-            {id: 6, name: 'Dima'}
-        ]
+        sidebar: {
+            closeFriends: [
+                {id: 1, name: 'Sergey'},
+                {id: 2, name: 'Evgeny'},
+                {id: 3, name: 'Sergey'},
+                {id: 4, name: 'Dima'},
+                {id: 5, name: 'Vadim'},
+                {id: 6, name: 'Dima'}
+            ]
+        }
     },
 
 
@@ -64,7 +66,7 @@ let store = {
         this._state.dialogPage = dialogsReducer(this._state.dialogPage, action);
         this._state.sidebar = sidebarReducer(this._state.sidebar, action);
 
-        this._rerenderEntireTree(this);
+        this._rerenderEntireTree(this._state);
     }
 }
 
