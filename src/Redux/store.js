@@ -60,9 +60,9 @@ let store = {
 
     dispatch(action) {
 
-        profileReducer(this._state.profilePage, action);
-        dialogsReducer(this._state.dialogPage, action);
-        sidebarReducer(this._state.sidebar, action);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogPage = dialogsReducer(this._state.dialogPage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
 
         this._rerenderEntireTree(this);
     }
