@@ -6,18 +6,19 @@ import {addMessageActionCreator, printTextActionCreator} from "../../Redux/state
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.dialogPage.dialogs.map( d => <DialogItem name={d.name} id={d.id}/> );
-    let messagesElements = props.dialogPage.messages.map( m => <Message message={m.message} id={m.id} owner={m.owner}/> );
-    let newPostElement = React.createRef();
-    let textarea = props.dialogPage.textarea;
+    let state = props.store.getState().dialogPage;
+
+    let dialogsElements = state.dialogs.map( d => <DialogItem name={d.name} id={d.id}/> );
+    let messagesElements = state.messages.map( m => <Message message={m.message} id={m.id} owner={m.owner}/> );
+    let textarea = state.textarea;
 
     let addMessage = () => {
-        props.dispatch( addMessageActionCreator() );
+        props.store.dispatch( addMessageActionCreator() );
     };
 
-    let printText = () => {
-        let text = newPostElement.current.value;
-        props.dispatch( printTextActionCreator(text) );
+    let printText = (event) => {
+        let text = event.target.value;
+        props.store.dispatch( printTextActionCreator(text) );
     };
 
     return (
@@ -28,7 +29,7 @@ const Dialogs = (props) => {
             <div className={d.messages}>
                 { messagesElements }
                 <div>
-                    <textarea onInput={printText} ref={newPostElement} value={textarea}></textarea>
+                    <textarea onInput={printText} value={textarea}></textarea>
                 </div>
                 <button onClick={addMessage}>Add post</button>
             </div>

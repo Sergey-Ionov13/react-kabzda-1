@@ -20,8 +20,7 @@ const App = (props) => {
                                  dispatch={props.store.dispatch.bind(props.store)} />
                     } />
                     <Route path='/Dialogs' render={ ()=>
-                        <Dialogs dialogPage={props.store.getState().dialogPage}
-                                 dispatch={props.store.dispatch.bind(props.store)} /> } />
+                        <Dialogs store={props.store} /> } />
                     <Route path='/Music' render={ ()=> <Music /> }/>
                     <Route path='/News' render={ ()=> <News /> }/>
                     <Route path='/Settings' render={ ()=> <Settings /> }/>
