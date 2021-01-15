@@ -4,8 +4,9 @@ import Post from "./Post/Post";
 
 const MyPosts = (props) => {
 
-    let postsElements = props.state.posts.map( p => <Post id={p.id} message={p.message} likesCount={p.likesCount}/> );
-    let textarea = props.state.textarea;
+    let postsElements = props.profilePage.posts.map(p => <Post id={p.id} message={p.message}
+                                                               likesCount={p.likesCount}/>);
+    let textarea = props.profilePage.textarea;
 
     let onAddPost = () => {
         props.addPost();
@@ -25,7 +26,7 @@ const MyPosts = (props) => {
                 </div>
                 <button onClick={onAddPost}>Add post</button>
             </div>
-            { postsElements }
+            {postsElements}
         </div>
     );
 }

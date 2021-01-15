@@ -1,22 +1,23 @@
-import React from 'react';
 import {addPostActionCreator, fillTextAreaActionCreator} from "../../../Redux/profile-reducer";
 import MyPosts from "./MyPosts";
+import {connect} from "react-redux";
 
-const MyPostsContainer = (props) => {
-
-    let state = props.store.getState().profilePage;
-
-    let addPost = () => {
-        props.store.dispatch( addPostActionCreator() );
-    };
-
-    let fillTextarea = (text) => {
-        props.store.dispatch( fillTextAreaActionCreator(text) );
-    };
-
-    return (
-        <MyPosts addPost={addPost} fillTextarea={fillTextarea} state={state} />
-    );
+const mapStateToProps = (state) => {
+    return {
+        profilePage: state.profilePage
+    }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addPost: () => {
+            dispatch(addPostActionCreator());
+        },
+        fillTextarea: (text) => {
+            dispatch(fillTextAreaActionCreator(text));
+        }
+    }
+}
+
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 
 export default MyPostsContainer;

@@ -24,7 +24,8 @@ const profileReducer = (state = initialState, action) => {
         case 'FILL-TEXTAREA':
             state.textarea = action.text;
             return state;
-        default: return state;
+        default:
+            return state;
     }
 }
 
