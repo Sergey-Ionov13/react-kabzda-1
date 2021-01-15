@@ -1,6 +1,6 @@
 import React from 'react';
-import f from './../FriendsBlock.module.css'
-import Ava from "./../../Avatar/Ava";
+import f from '../FriendsBlock.module.css'
+import Ava from "../../../Avatar/Ava";
 
 const FriendsItem = (props) => {
 

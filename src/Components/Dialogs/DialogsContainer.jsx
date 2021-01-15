@@ -1,22 +1,29 @@
 import React from 'react';
 import {addMessageActionCreator, printTextActionCreator} from "../../Redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
+import StoreContext from "../../Redux/StoreContext";
 
-const DialogsContainer = (props) => {
+const DialogsContainer = () => {
 
-    let state = props.store.getState().dialogPage;
+    return <StoreContext.Consumer>
+        {
+            store => {
+                let state = store.getState().dialogPage;
 
-    let addMessage = () => {
-        props.store.dispatch( addMessageActionCreator() );
-    };
+                let addMessage = () => {
+                    store.dispatch( addMessageActionCreator() );
+                };
 
-    let printText = (text) => {
-        props.store.dispatch( printTextActionCreator(text) );
-    };
+                let printText = (text) => {
+                    store.dispatch( printTextActionCreator(text) );
+                };
 
-    return (
-        <Dialogs state={state} addMessage={addMessage} printText={printText} />
-    );
+                return (
+                    <Dialogs state={state} addMessage={addMessage} printText={printText} />
+                );
+            }
+        }
+    </StoreContext.Consumer>
 }
 
 export default DialogsContainer;
