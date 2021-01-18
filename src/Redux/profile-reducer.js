@@ -14,22 +14,15 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
         {
-            let stateCopy = {...state};
-            stateCopy.posts = [...state.posts];
-            let newPost = {
-                id: stateCopy.posts.length + 1,
-                message: stateCopy.textarea,
-                likesCount: 0
+            return {
+                ...state,
+                posts: [...state.posts, {id: state.posts.length + 1, message: state.textarea, likesCount: 0}],
+                textarea: ''
             }
-            stateCopy.posts.push(newPost);
-            stateCopy.textarea = '';
-            return stateCopy;
         }
         case FILL_TEXTAREA:
         {
-            let stateCopy = {...state};
-            stateCopy.textarea = action.text;
-            return stateCopy;
+            return  {...state, textarea: action.text};
         }
         default:
             return state;
