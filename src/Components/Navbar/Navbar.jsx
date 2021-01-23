@@ -16,10 +16,13 @@ const Navbar = (props) => {
                 <NavLink to='/News' activeClassName={n.active}>News</NavLink>
             </div>
             <div className={n.item}>
-                <NavLink to='Music' activeClassName={n.active}>Music</NavLink>
+                <NavLink to='/Music' activeClassName={n.active}>Music</NavLink>
             </div>
             <div className={n.item}>
-                <NavLink to='Settings' activeClassName={n.active}>Settings</NavLink>
+                <NavLink to='/Settings' activeClassName={n.active}>Settings</NavLink>
+            </div>
+            <div className={n.item}>
+                <NavLink to='/Users' activeClassName={n.active}>Users</NavLink>
             </div>
             {/*<FriendsBlock sidebar={props.sidebar} />*/}
         </nav>
