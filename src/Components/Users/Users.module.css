@@ -3,3 +3,12 @@
     max-width: 50px;
 }
 
+.selected {
+    font-weight: bold;
+    color: white;
+}
+
+.paginationWrapper span {
+    padding: 3px;
+    cursor: pointer;
+}
