@@ -1,6 +1,7 @@
 import React from 'react';
 import userAva from '../../assets/images/defaultAva.jpg';
 import styles from './Users.module.css';
+import {NavLink} from "react-router-dom";
 
 const Users = (props) => {
 
@@ -13,9 +14,11 @@ const Users = (props) => {
     return (
         <div className={styles.paginationWrapper}>
             <div>
-                {pages.map( p =>
+                {pages.map(p =>
                     <span className={props.currentPage === p ? styles.selected : ''}
-                          onClick={ () => {props.setCurrentPage(p)}}
+                          onClick={() => {
+                              props.setCurrentPage(p)
+                          }}
                     >{p}</span>
                 )}
             </div>
@@ -23,7 +26,10 @@ const Users = (props) => {
                 props.users.map(u =>
                     <div key={u.id}>
                         <div>
-                            <img alt={''} src={u.photos.small !== null ? u.photos.small : userAva} className={styles.ava}/>
+                            <NavLink to={'/Profile/' + u.id}>
+                                <img alt={''} src={u.photos.small !== null ? u.photos.small : userAva}
+                                     className={styles.ava}/>
+                            </NavLink>
                             <button onClick={() => {
                                 props.followToggle(u.id)
                             }}>{u.followed ? 'Unfollow' : 'Follow'}</button>
