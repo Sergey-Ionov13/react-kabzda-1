@@ -19,3 +19,11 @@ export const getUserProfile = (userId) => {
 export const getAuthorizationStatus = () => {
     return instance.get('auth/me').then(response => response.data);
 }
+
+export const setUnfollow = (userId) => {
+    return instance.delete(`follow/${userId}`).then(response => response.data);
+}
+
+export const setFollow = (userId) => {
+    return instance.post(`follow/${userId}`, {}).then(response => response.data);
+}
