@@ -11,3 +11,11 @@ const instance = axios.create({
 export const getUsers = (currentPage, pageCapacity) => {
     return instance.get(`users?page=${currentPage}&count=${pageCapacity}`).then(response => response.data);
 }
+
+export const getUserProfile = (userId) => {
+    return instance.get(`profile/${userId}`).then(response => response.data);
+}
+
+export const getAuthorizationStatus = () => {
+    return instance.get('auth/me').then(response => response.data);
+}
