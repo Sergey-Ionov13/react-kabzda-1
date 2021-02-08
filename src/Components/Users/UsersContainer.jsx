@@ -9,12 +9,12 @@ import {
 import React from "react";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import {getUsers} from "../../api/api";
+import {usersAPI} from "../../api/api";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        getUsers(this.props.currentPage, this.props.pageCapacity).then(data => {
+        usersAPI.getUsers(this.props.currentPage, this.props.pageCapacity).then(data => {
             this.props.toggleIsFetching(false);
             this.props.setUsers(data.items);
             this.props.setTotalUsersCount(data.totalCount);
@@ -24,7 +24,7 @@ class UsersContainer extends React.Component {
     setCurrentPage = (pageNumber) => {
         this.props.toggleIsFetching(true);
         this.props.setCurrentPage(pageNumber);
-        getUsers(pageNumber, this.props.pageCapacity).then(data => {
+        usersAPI.getUsers(pageNumber, this.props.pageCapacity).then(data => {
             this.props.toggleIsFetching(false);
             this.props.setUsers(data.items);
             this.props.setTotalUsersCount(data.totalCount);
