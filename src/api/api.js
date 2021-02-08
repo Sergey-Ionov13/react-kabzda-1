@@ -13,16 +13,19 @@ export const usersAPI = {
     getUsers (currentPage, pageCapacity) {
         return instance.get(`users?page=${currentPage}&count=${pageCapacity}`).then(response => response.data);
     },
-    getUserProfile (userId) {
-        return instance.get(`profile/${userId}`).then(response => response.data);
-    },
-    getAuthorizationStatus () {
-        return instance.get('auth/me').then(response => response.data);
-    },
     setUnfollow (userId) {
         return instance.delete(`follow/${userId}`).then(response => response.data);
     },
     setFollow (userId) {
         return instance.post(`follow/${userId}`, {}).then(response => response.data);
+    }
+}
+
+export const profileAPI = {
+    getUserProfile (userId) {
+        return instance.get(`profile/${userId}`).then(response => response.data);
+    },
+    getAuthorizationStatus () {
+        return instance.get('auth/me').then(response => response.data);
     }
 }

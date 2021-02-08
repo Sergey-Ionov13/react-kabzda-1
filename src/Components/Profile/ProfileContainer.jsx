@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import Profile from "./Profile";
 import {setUserProfile} from "../../Redux/profile-reducer";
 import {withRouter} from 'react-router-dom';
-import {usersAPI} from "../../api/api";
+import {profileAPI} from "../../api/api";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
@@ -11,7 +11,7 @@ class ProfileContainer extends React.Component {
         if (!userId) {
             userId = 2;
         }
-        usersAPI.getUserProfile(userId).then(data => {
+        profileAPI.getUserProfile(userId).then(data => {
             this.props.setUserProfile(data)
         });
     }
