@@ -39,7 +39,7 @@ const profileReducer = (state = initialState, action) => {
 
 export const addPostActionCreator = () => ({type: ADD_POST});
 export const fillTextAreaActionCreator = (text) => ({type: FILL_TEXTAREA, text: text});
-export const setUserProfileAC = (profile) => ({type: SET_USER_PROFILE, profile});
+const setUserProfileAC = (profile) => ({type: SET_USER_PROFILE, profile});
 
 export const setUserProfile = (userID) => {
     return (dispatch) => {
