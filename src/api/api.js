@@ -27,5 +27,11 @@ export const profileAPI = {
     },
     getAuthorizationStatus () {
         return instance.get('auth/me').then(response => response.data);
+    },
+    getProfileStatus (userId) {
+        return instance.get(`profile/status/${userId}`).then(response => response.data);
+    },
+    changeProfileStatus (status) {
+        return instance.put(`profile/status/`, {status}).then(response => response.data);
     }
 }

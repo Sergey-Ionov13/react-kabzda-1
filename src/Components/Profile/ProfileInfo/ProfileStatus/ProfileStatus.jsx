@@ -2,7 +2,8 @@ import React from "react";
 
 class ProfileStatus extends React.Component {
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
 
     /*              !!!!!!!!!!!!!!!   Realization with two methods   !!!!!!!!!!!!!!!
@@ -18,6 +19,13 @@ class ProfileStatus extends React.Component {
     */
     editModeToggle = () => {
         this.setState({editMode: !this.state.editMode});
+        if (!this.state.editMode) {
+            this.props.updateStatus(this.state.status);
+        }
+    }
+
+    onChangeStatus = (e) => {
+        this.setState({status: e.currentTarget.value});
     }
 
     render() {
@@ -25,11 +33,11 @@ class ProfileStatus extends React.Component {
             <div>{
                 this.state.editMode
                     ? <div>
-                        <input onBlur={this.editModeToggle} autoFocus={true} value={this.props.status}/>
+                        <input onChange={this.onChangeStatus} onBlur={this.editModeToggle} autoFocus={true} value={this.state.status}/>
                     </div>
                     : <div>
-                <span onDoubleClick={this.editModeToggle}>{this.props.status}</span>
-                </div>
+                        <span onDoubleClick={this.editModeToggle}>{this.props.status || '---'}</span>
+                    </div>
             }</div>
         )
     }

@@ -3,6 +3,7 @@ import {profileAPI} from "../api/api";
 const ADD_POST = 'ADD-POST';
 const FILL_TEXTAREA = 'FILL-TEXTAREA';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_STATUS = 'SET_STATUS';
 
 const initialState = {
     posts: [
@@ -10,7 +11,8 @@ const initialState = {
         {id: 2, message: 'It\'s my second post', likesCount: 7}
     ],
     textarea: '',
-    profile: null
+    profile: null,
+    status: ''
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -32,6 +34,10 @@ const profileReducer = (state = initialState, action) => {
         {
             return {...state, profile: action.profile};
         }
+        case SET_STATUS:
+        {
+            return {...state, status: action.status};
+        }
         default:
             return state;
     }
@@ -40,6 +46,7 @@ const profileReducer = (state = initialState, action) => {
 export const addPostActionCreator = () => ({type: ADD_POST});
 export const fillTextAreaActionCreator = (text) => ({type: FILL_TEXTAREA, text: text});
 const setUserProfileAC = (profile) => ({type: SET_USER_PROFILE, profile});
+const setStatus = (status) => ({type: SET_STATUS, status});
 
 export const setUserProfile = (userID) => {
     return (dispatch) => {
@@ -49,6 +56,24 @@ export const setUserProfile = (userID) => {
         }
         profileAPI.getUserProfile(userId).then(data => {
             dispatch(setUserProfileAC(data));
+        });
+    }
+}
+
+export const getStatus = (userId) => {
+    return (dispatch) => {
+        profileAPI.getProfileStatus(userId).then(data => {
+            dispatch(setStatus(data));
+        });
+    }
+}
+
+export const updateStatus = (status) => {
+    return (dispatch) => {
+        profileAPI.changeProfileStatus(status).then(data => {
+            if (!data.resultCode) {
+                dispatch(setStatus(status));
+            }
         });
     }
 }
