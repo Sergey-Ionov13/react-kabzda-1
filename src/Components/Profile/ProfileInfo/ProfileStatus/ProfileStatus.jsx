@@ -6,6 +6,14 @@ class ProfileStatus extends React.Component {
         status: this.props.status
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.status !== this.props.status){
+            this.setState({
+                status: this.props.status
+            });
+        }
+    }
+
     /*              !!!!!!!!!!!!!!!   Realization with two methods   !!!!!!!!!!!!!!!
 
     //add this.disableEditMode to onBlur input attribute
@@ -19,7 +27,7 @@ class ProfileStatus extends React.Component {
     */
     editModeToggle = () => {
         this.setState({editMode: !this.state.editMode});
-        if (!this.state.editMode) {
+        if (this.state.editMode) {
             this.props.updateStatus(this.state.status);
         }
     }
